@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx_proxy:
+    build:
+      context: ./docker/nginx_proxy
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./docker/nginx_proxy/nginx.conf:/usr/local/nginx/conf/nginx.conf
+      - nginx_proxy_log:/var/log
+volumes:
+  nginx_proxy_log:
+    driver: local
